@@ -583,12 +583,12 @@ class RethinkDb {
 
   /// Construct a circular line or polygon.
   Circle circle(point, num radius, [Map? options]) =>
-      Circle(point, radius, options!);
+      Circle(point, radius, options);
 
   /// Compute the distance between a point and a geometry object
 
   Distance distance(geo1, geo2, [Map? options]) =>
-      Distance(geo1, geo2, options!);
+      Distance(geo1, geo2, options);
 
   /// Construct a geometric line
   dynamic get line => LineFunction();
