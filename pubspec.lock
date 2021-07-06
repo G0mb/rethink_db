@@ -105,7 +105,7 @@ packages:
   pbkdf2_dart:
     dependency: "direct main"
     description:
-      path: "/home/ivan/Documents/pbkdf2"
+      path: "/Users/saherla/Desktop/flutter-test/pbkdf2"
       relative: false
     source: path
     version: "2.1.0"
