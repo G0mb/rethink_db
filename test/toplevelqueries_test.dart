@@ -43,8 +43,8 @@ main() {
       await r.db('fake2834723895').tableList().run(connection);
     } catch (err) {
       expect(err is Exception, equals(true));
-      expect(
-          err.toString(), equals('Database `fake2834723895` does not exist.'));
+      expect(err.toString().split("\n")[2],
+          equals('Database `fake2834723895` does not exist.'));
     }
   });
 
@@ -71,7 +71,7 @@ main() {
       } catch (err) {
         expect(err is Exception, equals(true));
         expect(
-            err.toString(),
+            err.toString().split("\n")[2],
             // ignore: unnecessary_brace_in_string_interps
             equals('Database `${databaseName}` already exists.'));
       }
@@ -100,8 +100,8 @@ main() {
       try {
         await r.dbDrop(databaseName).run(connection);
       } catch (err) {
-        expect(err.toString(),
-            equals('Database `${databaseName}` does not exist.'));
+        expect(err.toString().split("\n")[2].split("\n")[2],
+            equals('Database `$databaseName` does not exist.'));
       }
     });
   });
@@ -190,7 +190,7 @@ main() {
             .table('stats', {'read_mode': 'badReadMode'}).run(connection);
       } catch (err) {
         expect(
-            err.toString(),
+            err.toString().split("\n")[2],
             equals(
                 'Read mode `badReadMode` unrecognized (options are "majority", "single", and "outdated").'));
       }
@@ -228,7 +228,7 @@ main() {
             .table('stats', {'identifier_format': 'badFormat'}).run(connection);
       } catch (err) {
         expect(
-            err.toString(),
+            err.toString().split("\n")[2],
             equals(
                 'Identifier format `badFormat` unrecognized (options are "name" and "uuid").'));
       }
@@ -240,7 +240,7 @@ main() {
             .db('rethinkdb')
             .table('stats', {'fake_option': 'bad_value'}).run(connection);
       } catch (err) {
-        expect(err.toString(),
+        expect(err.toString().split("\n")[2],
             equals('Unrecognized optional argument `fake_option`.'));
       }
       ;
@@ -389,7 +389,7 @@ main() {
       await r.error('This is my Error').run(connection);
     } catch (err) {
       expect(err.runtimeType, equals(ReqlUserError));
-      expect(err.toString(), equals('This is my Error'));
+      expect(err.toString().split("\n")[2], equals('This is my Error'));
     }
   });
 
@@ -423,7 +423,7 @@ main() {
         expect(
             err.toString(),
             equals(
-                'JavaScript query `${jsString}` timed out after ${timeout}.000 seconds.'));
+                'JavaScript query `$jsString` timed out after $timeout.000 seconds.'));
       }
     });
   });
@@ -442,7 +442,7 @@ main() {
         await r.json(jsonString).run(connection);
       } catch (err) {
         expect(
-            err.toString(),
+            err.toString().split("\n")[2],
             equals(
                 'Failed to parse "$jsonString" as JSON: The document root must not follow by other values.'));
       }
@@ -470,7 +470,7 @@ main() {
             .run(connection);
       } catch (err) {
         expect(
-            err.toString(),
+            err.toString().split("\n")[2],
             equals(
                 'OBJECT expects an even number of arguments (but found 7).'));
       }
