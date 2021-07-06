@@ -471,7 +471,7 @@ class RethinkDb {
 
   /// Drop a table. The table and all its data will be deleted.
   TableDrop tableDrop(String tableName, [Map? options]) =>
-      TableDrop(tableName, options!);
+      TableDrop(tableName, options);
 
   /// Specify ascending order on an attribute
   Asc asc(String attr) => Asc(attr);
