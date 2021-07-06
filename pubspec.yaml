@@ -2,6 +2,7 @@ name: rethink_db
 description: A new Flutter package project.
 version: 0.0.1
 homepage: https://github.com/herla97/rethink_db
+publish_to: none
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,8 +11,9 @@ environment:
 dependencies:
   protobuf: ^2.0.0
   crypto: ^3.0.1
-  conduit_password_hash: ^3.0.11
   convert: ^3.0.1
+  pbkdf2_dart:
+    path: /home/ivan/Documents/pbkdf2
 
   flutter:
     sdk: flutter

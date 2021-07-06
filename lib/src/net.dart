@@ -199,7 +199,7 @@ class Connection {
         if (authMap.containsKey('r')) {
           String salt = String.fromCharCodes(base64.decode(authMap['s']));
 
-          PBKDF2 gen = PBKDF2();
+          PBKDF2 gen = PBKDF2(hash: sha256);
 
           int i = int.parse(authMap['i']);
 

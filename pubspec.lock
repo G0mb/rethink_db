@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
-  conduit_password_hash:
-    dependency: "direct main"
-    description:
-      name: conduit_password_hash
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.11"
   convert:
     dependency: "direct main"
     description:
@@ -109,6 +102,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  pbkdf2_dart:
+    dependency: "direct main"
+    description:
+      path: "/home/ivan/Documents/pbkdf2"
+      relative: false
+    source: path
+    version: "2.1.0"
   protobuf:
     dependency: "direct main"
     description:
