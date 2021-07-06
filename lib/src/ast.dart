@@ -414,8 +414,8 @@ class RqlQuery {
     return retObj;
   }
 
-  _convertPseudotype(Map obj, Map formatOpts) {
-    String reqlType = obj['\$reql_type\$'];
+  _convertPseudotype(Map obj, Map? formatOpts) {
+    String? reqlType = obj['\$reql_type\$'];
     if (reqlType != null) {
       if (reqlType == 'TIME') {
         if (formatOpts == null || formatOpts.isEmpty) {

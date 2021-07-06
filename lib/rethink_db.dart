@@ -458,13 +458,13 @@ class RethinkDb {
   }
 
   /// Select all documents in a table. This command can be chained with other commands to do further processing on the data.
-  Table table(String tableName, [Map? options]) => Table(tableName, options!);
+  Table table(String tableName, [Map? options]) => Table(tableName, options);
 
   /// Create a table. A RethinkDB table is a collection of JSON documents.
   /// If successful, the operation returns an object: {created: 1}. If a table with the same name already exists, the operation throws RqlRuntimeError.
   /// Note: that you can only use alphanumeric characters and underscores for the table name.
   TableCreate tableCreate(String tableName, [Map? options]) =>
-      TableCreate(tableName, options!);
+      TableCreate(tableName, options);
 
   /// List all table names in a database. The result is a list of strings.
   TableList tableList() => TableList();
