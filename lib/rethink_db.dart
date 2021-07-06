@@ -419,14 +419,15 @@ class RethinkDb {
   /// db: the default database (defaults to test).
   /// user: the user name for the db (defaults to admin).
   /// password: password for the user (default "").
-  Future<Connection> connect(
-          {String db = 'test',
-          String host = "localhost",
-          int port = 28015,
-          String user = "admin",
-          String password = "",
-          Map? ssl}) =>
-      Connection(db, host, port, user, password, ssl!).reconnect();
+  Future<Connection> connect({
+    String db = 'test',
+    String host = "localhost",
+    int port = 28015,
+    String user = "admin",
+    String password = "",
+    Map? ssl,
+  }) =>
+      Connection(db, host, port, user, password, ssl).reconnect();
 
   /// Reference a database.This command can be chained with other commands to do further processing on the data.
   DB db(String dbName) => DB(dbName);

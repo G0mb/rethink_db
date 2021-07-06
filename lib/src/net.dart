@@ -50,7 +50,7 @@ class Response {
 }
 
 class Connection {
-  late Socket? _socket;
+  Socket? _socket;
   static int _nextToken = 0;
   String _host;
   int _port;
@@ -60,7 +60,7 @@ class Connection {
   int _protocolVersion = 0;
   late String _clientFirstMessage;
   late Digest _serverSignature;
-  Map _sslOpts;
+  late Map? _sslOpts;
 
   Completer<Connection> _completer = Completer();
 
@@ -72,8 +72,14 @@ class Connection {
 
   final Map<String, List> _listeners = Map<String, List>();
 
-  Connection(this._db, this._host, this._port, this._user, this._password,
-      this._sslOpts);
+  Connection(
+    this._db,
+    this._host,
+    this._port,
+    this._user,
+    this._password,
+    this._sslOpts,
+  );
 
   // ignore: unnecessary_null_comparison
   get isClosed => _socket == null;
@@ -101,10 +107,9 @@ class Connection {
     }
     var _sock = Socket.connect(_host, _port);
 
-    // ignore: unnecessary_null_comparison
-    if (_sslOpts != null && _sslOpts.containsKey('ca')) {
+    if (_sslOpts != null && _sslOpts!.containsKey('ca')) {
       SecurityContext context = SecurityContext()
-        ..setTrustedCertificates(_sslOpts['ca']);
+        ..setTrustedCertificates(_sslOpts!['ca']);
       _sock = SecureSocket.connect(_host, _port, context: context);
     }
 
