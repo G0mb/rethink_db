@@ -10,7 +10,7 @@ main() {
 }
 
 Future pEx() {
-  var r = Rethinkdb() as dynamic;
+  var r = RethinkDb() as dynamic;
   return r
       .connect(db: "test", port: 28015)
       .then((connection) => _queryWhileWriting(connection, r));

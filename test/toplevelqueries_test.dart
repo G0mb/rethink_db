@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rethink_db/rethink_db.dart';
 
 main() {
-  var r = Rethinkdb() as dynamic;
+  var r = RethinkDb() as dynamic;
   String? databaseName;
   String? tableName;
   String? testDbName;
@@ -110,7 +110,7 @@ main() {
     List response = await r.dbList().run(connection);
 
     expect(response is List, equals(true));
-    expect(response.indexOf('rethinkdb'), greaterThan(-1));
+    expect(response.indexOf('RethinkDb'), greaterThan(-1));
   });
 
   group("range command -> ", () {
@@ -140,7 +140,7 @@ main() {
   group("table command -> ", () {
     test("table should return a cursor containing all records for a table",
         () async {
-      Cursor cur = await r.db('rethinkdb').table('stats').run(connection);
+      Cursor cur = await r.db('RethinkDb').table('stats').run(connection);
       await for (Map item in cur) {
         expect(item.containsKey('id'), equals(true));
         expect(item.containsKey('query_engine'), equals(true));
@@ -149,7 +149,7 @@ main() {
 
     test("table should allow for `read_mode: single` option", () async {
       Cursor cur = await r
-          .db('rethinkdb')
+          .db('RethinkDb')
           .table('stats', {'read_mode': 'single'}).run(connection);
 
       await for (Map item in cur) {
@@ -161,7 +161,7 @@ main() {
 
     test("table should allow for `read_mode: majority` option", () async {
       Cursor cur = await r
-          .db('rethinkdb')
+          .db('RethinkDb')
           .table('stats', {'read_mode': 'majority'}).run(connection);
 
       await for (Map item in cur) {
@@ -173,7 +173,7 @@ main() {
 
     test("table should allow for `read_mode: outdated` option", () async {
       Cursor cur = await r
-          .db('rethinkdb')
+          .db('RethinkDb')
           .table('stats', {'read_mode': 'outdated'}).run(connection);
 
       await for (Map item in cur) {
@@ -186,7 +186,7 @@ main() {
     test("table should catch invalid read_mode option", () async {
       try {
         await r
-            .db('rethinkdb')
+            .db('RethinkDb')
             .table('stats', {'read_mode': 'badReadMode'}).run(connection);
       } catch (err) {
         expect(
@@ -199,7 +199,7 @@ main() {
 
     test("table should allow for `identifier_format: name` option", () async {
       Cursor cur = await r
-          .db('rethinkdb')
+          .db('RethinkDb')
           .table('stats', {'identifier_format': 'name'}).run(connection);
 
       await for (Map item in cur) {
@@ -211,7 +211,7 @@ main() {
 
     test("table should allow for `identifier_format: uuid` option", () async {
       Cursor cur = await r
-          .db('rethinkdb')
+          .db('RethinkDb')
           .table('stats', {'identifier_format': 'uuid'}).run(connection);
 
       await for (Map item in cur) {
@@ -224,7 +224,7 @@ main() {
     test("table should catch invalid identifier_format option", () async {
       try {
         await r
-            .db('rethinkdb')
+            .db('RethinkDb')
             .table('stats', {'identifier_format': 'badFormat'}).run(connection);
       } catch (err) {
         expect(
@@ -237,7 +237,7 @@ main() {
     test("table should catch bad options", () async {
       try {
         await r
-            .db('rethinkdb')
+            .db('RethinkDb')
             .table('stats', {'fake_option': 'bad_value'}).run(connection);
       } catch (err) {
         expect(err.toString(),

@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rethink_db/rethink_db.dart';
 
 main() {
-  var r = Rethinkdb() as dynamic;
+  var r = RethinkDb() as dynamic;
   String? databaseName;
   String? tableName;
   String? testDbName;

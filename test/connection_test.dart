@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rethink_db/rethink_db.dart';
 
 main() {
-  Rethinkdb r = Rethinkdb();
+  RethinkDb r = RethinkDb();
 
   test("connect() connects with defaults if no params are passed", () async {
     Connection c = await r.connect();

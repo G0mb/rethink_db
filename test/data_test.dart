@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rethink_db/rethink_db.dart';
 
 main() {
-  Rethinkdb r = Rethinkdb();
+  RethinkDb r = RethinkDb();
   String? tableName;
   String? testDbName;
   bool shouldDropTable = false;

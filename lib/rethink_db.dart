@@ -316,7 +316,7 @@ class NeFunction {
 
 /// Adds fields to an object
 class ObjectFunction {
-  Rethinkdb _rethinkdb;
+  RethinkDb _rethinkdb;
 
   ObjectFunction(this._rethinkdb);
 
@@ -370,7 +370,7 @@ class PolygonFunction {
 /// Evaluate the expr in the context of one or more value bindings.
 /// The type of the result is the type of the value returned from expr.
 class RqlDoFunction {
-  Rethinkdb _rethinkdb;
+  RethinkDb _rethinkdb;
 
   RqlDoFunction(this._rethinkdb);
 
@@ -411,7 +411,7 @@ class SubFunction {
   }
 }
 
-class Rethinkdb {
+class RethinkDb {
 // Connection Management
   /// Create a new connection to the database server. Accepts the following options:
   /// host: the host to connect to (default localhost).
