@@ -105,9 +105,11 @@ packages:
   pbkdf2_dart:
     dependency: "direct main"
     description:
-      path: "/Users/saherla/Desktop/flutter-test/pbkdf2"
-      relative: false
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "41cf346d879d470931d722210863b9a943c74f33"
+      url: "https://github.com/G0mb/pbkdf2"
+    source: git
     version: "2.1.0"
   protobuf:
     dependency: "direct main"

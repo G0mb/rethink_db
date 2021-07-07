@@ -13,7 +13,7 @@ dependencies:
   crypto: ^3.0.1
   convert: ^3.0.1
   pbkdf2_dart:
-    path: /Users/saherla/Desktop/flutter-test/pbkdf2
+    git: https://github.com/G0mb/pbkdf2
 
   flutter:
     sdk: flutter
