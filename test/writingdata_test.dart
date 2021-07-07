@@ -253,41 +253,41 @@ main() {
 
   group("delete command -> ", () {
     test("should delete a single selection", () async {
-      Map deleted = await r
+      Map? deleted = await r
           .table(tableName!)
           .get(1)
           .delete({'return_changes': true}).run(connection!);
 
-      Map newVal = deleted['changes'][0]['new_val'];
-      Map oldVal = deleted['changes'][0]['old_val'];
+      Map? newVal = deleted!['changes'][0]['new_val'];
+      Map? oldVal = deleted['changes'][0]['old_val'];
 
       expect(deleted['deleted'], equals(1));
       expect(newVal, equals(null));
-      expect(oldVal['id'], equals(1));
+      expect(oldVal!['id'], equals(1));
     });
 
     test("should delete a selection", () async {
-      Map deleted = await r
+      Map? deleted = await r
           .table(tableName!)
           .limit(2)
           .delete({'return_changes': true}).run(connection!);
 
-      expect(deleted['changes'].length, equals(2));
+      expect(deleted!['changes'].length, equals(2));
 
-      Map newVal = deleted['changes'][0]['new_val'];
-      Map oldVal = deleted['changes'][0]['old_val'];
+      Map? newVal = deleted['changes'][0]['new_val'];
+      Map? oldVal = deleted['changes'][0]['old_val'];
 
       expect(deleted['deleted'], equals(2));
       expect(newVal, equals(null));
 
-      expect(oldVal.containsKey('name') || oldVal.containsKey('kit'),
+      expect(oldVal!.containsKey('name') || oldVal.containsKey('kit'),
           equals(true));
 
       newVal = deleted['changes'][1]['new_val'];
       oldVal = deleted['changes'][1]['old_val'];
 
       expect(newVal, equals(null));
-      expect(oldVal.containsKey('name') || oldVal.containsKey('kit'),
+      expect(oldVal!.containsKey('name') || oldVal.containsKey('kit'),
           equals(true));
     });
 

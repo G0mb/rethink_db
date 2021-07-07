@@ -7,7 +7,7 @@ import 'src/generated/ql2.pb.dart' as p;
 import 'dart:convert';
 import 'dart:collection';
 import 'package:crypto/crypto.dart';
-import 'package:conduit_password_hash/conduit_password_hash.dart';
+import 'package:pbkdf2ns/pbkdf2ns.dart';
 import 'dart:math' as math;
 
 part 'src/ast.dart';
@@ -419,14 +419,15 @@ class RethinkDb {
   /// db: the default database (defaults to test).
   /// user: the user name for the db (defaults to admin).
   /// password: password for the user (default "").
-  Future<Connection> connect(
-          {String db = 'test',
-          String host = "localhost",
-          int port = 28015,
-          String user = "admin",
-          String password = "",
-          Map? ssl}) =>
-      Connection(db, host, port, user, password, ssl!).reconnect();
+  Future<Connection> connect({
+    String db = 'test',
+    String host = "localhost",
+    int port = 28015,
+    String user = "admin",
+    String password = "",
+    Map? ssl,
+  }) =>
+      Connection(db, host, port, user, password, ssl).reconnect();
 
   /// Reference a database.This command can be chained with other commands to do further processing on the data.
   DB db(String dbName) => DB(dbName);
@@ -457,20 +458,20 @@ class RethinkDb {
   }
 
   /// Select all documents in a table. This command can be chained with other commands to do further processing on the data.
-  Table table(String tableName, [Map? options]) => Table(tableName, options!);
+  Table table(String tableName, [Map? options]) => Table(tableName, options);
 
   /// Create a table. A RethinkDB table is a collection of JSON documents.
   /// If successful, the operation returns an object: {created: 1}. If a table with the same name already exists, the operation throws RqlRuntimeError.
   /// Note: that you can only use alphanumeric characters and underscores for the table name.
   TableCreate tableCreate(String tableName, [Map? options]) =>
-      TableCreate(tableName, options!);
+      TableCreate(tableName, options);
 
   /// List all table names in a database. The result is a list of strings.
   TableList tableList() => TableList();
 
   /// Drop a table. The table and all its data will be deleted.
   TableDrop tableDrop(String tableName, [Map? options]) =>
-      TableDrop(tableName, options!);
+      TableDrop(tableName, options);
 
   /// Specify ascending order on an attribute
   Asc asc(String attr) => Asc(attr);
@@ -496,6 +497,7 @@ class RethinkDb {
   /// We support all valid ISO 8601 formats except for week dates.
   /// If you pass an ISO 8601 date-time without a time zone, you must specify the time zone with the optarg default_timezone.
   ///
+  // ignore: non_constant_identifier_names
   RqlISO8601 ISO8601(String stringTime, [defaultTimeZone = "Z"]) =>
       RqlISO8601(stringTime, defaultTimeZone);
 
@@ -582,12 +584,12 @@ class RethinkDb {
 
   /// Construct a circular line or polygon.
   Circle circle(point, num radius, [Map? options]) =>
-      Circle(point, radius, options!);
+      Circle(point, radius, options);
 
   /// Compute the distance between a point and a geometry object
 
   Distance distance(geo1, geo2, [Map? options]) =>
-      Distance(geo1, geo2, options!);
+      Distance(geo1, geo2, options);
 
   /// Construct a geometric line
   dynamic get line => LineFunction();

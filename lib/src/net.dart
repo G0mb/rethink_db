@@ -3,9 +3,9 @@ part of rethink_db;
 class Query extends RqlQuery {
   p.Query_QueryType _type;
   int _token;
-  late RqlQuery? _term;
+  RqlQuery? _term;
   late Map? _globalOptargs;
-  late Cursor _cursor;
+  Cursor? _cursor;
   final Completer _queryCompleter = Completer();
 
   Query(this._type, this._token, [this._term, this._globalOptargs]);
@@ -33,8 +33,8 @@ class Response {
   var _data;
   var _backtrace;
   var _profile;
-  late int _errorType;
-  List _notes = [];
+  late int? _errorType;
+  List? _notes = [];
 
   Response(this._token, String jsonStr) {
     if (jsonStr.isNotEmpty) {
@@ -50,7 +50,7 @@ class Response {
 }
 
 class Connection {
-  late Socket? _socket;
+  Socket? _socket;
   static int _nextToken = 0;
   String _host;
   int _port;
@@ -60,7 +60,7 @@ class Connection {
   int _protocolVersion = 0;
   late String _clientFirstMessage;
   late Digest _serverSignature;
-  Map _sslOpts;
+  late Map? _sslOpts;
 
   Completer<Connection> _completer = Completer();
 
@@ -68,12 +68,18 @@ class Connection {
   List<int> _responseBuffer = [];
 
   final Map _replyQueries = Map();
-  final Queue<Query> _sendQueue = Queue<Query>();
+  final Queue<dynamic> _sendQueue = Queue<Query>();
 
   final Map<String, List> _listeners = Map<String, List>();
 
-  Connection(this._db, this._host, this._port, this._user, this._password,
-      this._sslOpts);
+  Connection(
+    this._db,
+    this._host,
+    this._port,
+    this._user,
+    this._password,
+    this._sslOpts,
+  );
 
   // ignore: unnecessary_null_comparison
   get isClosed => _socket == null;
@@ -84,7 +90,8 @@ class Connection {
 
   Future server() {
     // RqlQuery query =
-    Query query = Query(p.Query_QueryType.SERVER_INFO, _getToken(), null, null);
+    RqlQuery query =
+        Query(p.Query_QueryType.SERVER_INFO, _getToken(), null, null);
     _sendQueue.add(query);
     return _start(query);
   }
@@ -101,10 +108,9 @@ class Connection {
     }
     var _sock = Socket.connect(_host, _port);
 
-    // ignore: unnecessary_null_comparison
-    if (_sslOpts != null && _sslOpts.containsKey('ca')) {
+    if (_sslOpts != null && _sslOpts!.containsKey('ca')) {
       SecurityContext context = SecurityContext()
-        ..setTrustedCertificates(_sslOpts['ca']);
+        ..setTrustedCertificates(_sslOpts!['ca']);
       _sock = SecureSocket.connect(_host, _port, context: context);
     }
 
@@ -194,7 +200,7 @@ class Connection {
         if (authMap.containsKey('r')) {
           String salt = String.fromCharCodes(base64.decode(authMap['s']));
 
-          PBKDF2 gen = PBKDF2();
+          PBKDF2NS gen = PBKDF2NS(hash: sha256);
 
           int i = int.parse(authMap['i']);
 
@@ -247,7 +253,7 @@ class Connection {
   _handleQueryResponse(Response response) {
     Query query = _replyQueries.remove(response._token);
 
-    Exception hasError = _checkErrorResponse(response, query._term);
+    Exception? hasError = _checkErrorResponse(response, query._term);
     // ignore: unnecessary_null_comparison
     if (hasError != null) {
       query._queryCompleter.completeError(hasError);
@@ -257,7 +263,7 @@ class Connection {
     if (response._type == p.Response_ResponseType.SUCCESS_PARTIAL.value) {
       _replyQueries[response._token] = query;
       var cursor;
-      response._notes.forEach((note) {
+      response._notes!.forEach((note) {
         if (note == p.Response_ResponseNote.SEQUENCE_FEED.value) {
           cursor = cursor == null ? Feed(this, query, query.optargs) : cursor;
         } else if (note == p.Response_ResponseNote.UNIONED_FEED.value) {
@@ -353,7 +359,7 @@ class Connection {
 
   noreplyWait() {
     // RqlQuery query =
-    Query query =
+    RqlQuery query =
         Query(p.Query_QueryType.NOREPLY_WAIT, _getToken(), null, null);
 
     _sendQueue.add(query);
@@ -416,7 +422,7 @@ class Connection {
     if (response._type == p.Response_ResponseType.RUNTIME_ERROR.value) {
       message = response._data.first;
       frames = response._backtrace;
-      int errType = response._errorType;
+      int? errType = response._errorType;
       if (errType == p.Response_ErrorType.INTERNAL.value) {
         return ReqlInternalError(message, term, frames);
       } else if (errType == p.Response_ErrorType.RESOURCE_LIMIT.value) {

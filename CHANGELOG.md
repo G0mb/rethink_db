@@ -1,3 +1,4 @@
-## 0.0.1
+# 0.0.1
 
-* TODO: Describe initial release.
+- Null safety support
+- [PBKDF2](https://github.com/G0mb/pbkdf2) dependency update
