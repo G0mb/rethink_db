@@ -65,7 +65,7 @@ packages:
     source: hosted
     version: "1.2.0"
   fixnum:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: fixnum
       url: "https://pub.dartlang.org"
@@ -102,15 +102,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-  pbkdf2_dart:
+  pbkdf2ns:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "41cf346d879d470931d722210863b9a943c74f33"
-      url: "https://github.com/G0mb/pbkdf2"
-    source: git
-    version: "2.1.0"
+      name: pbkdf2ns
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   protobuf:
     dependency: "direct main"
     description:

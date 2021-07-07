@@ -1,8 +1,7 @@
 name: rethink_db
-description: A new Flutter package project.
+description: This is an unofficial driver for using RethinkDB in Dart and Flutter supporting Null Safety, this driver is based on a fork https://github.com/marceloneppel/rethinkdb
 version: 0.0.1
 homepage: https://github.com/G0mb/rethink_db
-publish_to: none
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,10 +9,10 @@ environment:
 
 dependencies:
   protobuf: ^2.0.0
+  fixnum: ^1.0.0
   crypto: ^3.0.1
   convert: ^3.0.1
-  pbkdf2_dart:
-    git: https://github.com/G0mb/pbkdf2
+  pbkdf2ns: ^0.0.1
 
   flutter:
     sdk: flutter

@@ -7,7 +7,7 @@ import 'src/generated/ql2.pb.dart' as p;
 import 'dart:convert';
 import 'dart:collection';
 import 'package:crypto/crypto.dart';
-import 'package:pbkdf2_dart/pbkdf2_dart.dart';
+import 'package:pbkdf2ns/pbkdf2ns.dart';
 import 'dart:math' as math;
 
 part 'src/ast.dart';
@@ -497,6 +497,7 @@ class RethinkDb {
   /// We support all valid ISO 8601 formats except for week dates.
   /// If you pass an ISO 8601 date-time without a time zone, you must specify the time zone with the optarg default_timezone.
   ///
+  // ignore: non_constant_identifier_names
   RqlISO8601 ISO8601(String stringTime, [defaultTimeZone = "Z"]) =>
       RqlISO8601(stringTime, defaultTimeZone);
 
