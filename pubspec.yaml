@@ -1,7 +1,7 @@
 name: rethink_db
 description: A new Flutter package project.
 version: 0.0.1
-homepage: https://github.com/herla97/rethink_db
+homepage: https://github.com/G0mb/rethink_db
 publish_to: none
 
 environment:
