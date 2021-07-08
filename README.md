@@ -4,7 +4,7 @@ This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marce
 
 ## Getting Started
 
-### Install Package (WIP)
+### Install Package
 
 > Install from [Pub](https://pub.dev/)
 ```zsh
