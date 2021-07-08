@@ -8,7 +8,7 @@ This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marce
 
 > Install from [Pub](https://pub.dev/)
 ```zsh
-flutter pub add rethink_db
+flutter pub add rethink_db_ns
 ```
 
 ```yaml
