@@ -1,6 +1,6 @@
 name: rethink_db_ns
 description: This is an unofficial driver for using RethinkDB in Dart and Flutter supporting Null Safety, this driver is based on a fork https://github.com/marceloneppel/rethinkdb
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/G0mb/rethink_db
 
 environment:
