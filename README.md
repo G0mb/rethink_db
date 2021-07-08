@@ -13,7 +13,7 @@ flutter pub add rethink_db
 
 ```yaml
 dependencies:
-  rethink_db: ^0.0.1
+  rethink_db_ns: ^0.0.2
 ```
 
 > Install from [Github](https://github.com/G0mb/rethink_db)
@@ -22,16 +22,18 @@ dependencies:
   rethink_db:
     git: 
       url: git://github.com/G0mb/rethink_db.git
-      ref: dev
+      ref: main
 ```
 
 Then import the package into your project:
 ```dart
-import 'package:rethink_db/rethink_db.dart';
+import 'package:rethink_db_ns/rethink_db_ns.dart';
 ```
 
 ### Example
 ```dart
+RethinkDb r = RethinkDb();
+
 final connection = await r.connection(
   db: 'test',
   host: 'localhost',
