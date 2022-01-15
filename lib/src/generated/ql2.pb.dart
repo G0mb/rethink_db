@@ -146,12 +146,19 @@ class Query extends $pb.GeneratedMessage {
           : 'Query',
       createEmptyInstance: create)
     ..e<Query_QueryType>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE,
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'type',
+        $pb.PbFieldType.OE,
         defaultOrMaker: Query_QueryType.START,
         valueOf: Query_QueryType.valueOf,
         enumValues: Query_QueryType.values)
     ..aOM<Term>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'query',
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'query',
         subBuilder: Term.create)
     ..aInt64(
         3,
@@ -159,10 +166,23 @@ class Query extends $pb.GeneratedMessage {
             ? ''
             : 'token')
     ..aOB(
-        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'OBSOLETENoreply',
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'OBSOLETENoreply',
         protoName: 'OBSOLETE_noreply')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'acceptsRJson')
-    ..pc<Query_AssocPair>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'globalOptargs', $pb.PbFieldType.PM, subBuilder: Query_AssocPair.create)
+    ..aOB(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'acceptsRJson')
+    ..pc<Query_AssocPair>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'globalOptargs',
+        $pb.PbFieldType.PM,
+        subBuilder: Query_AssocPair.create)
     ..hasRequiredFields = false;
 
   Query._() : super();
@@ -451,9 +471,17 @@ class Backtrace extends $pb.GeneratedMessage {
 }
 
 class Response extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Response',
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Response',
       createEmptyInstance: create)
-    ..e<Response_ResponseType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE,
+    ..e<Response_ResponseType>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'type',
+        $pb.PbFieldType.OE,
         defaultOrMaker: Response_ResponseType.SUCCESS_ATOM,
         valueOf: Response_ResponseType.valueOf,
         enumValues: Response_ResponseType.values)
@@ -462,16 +490,39 @@ class Response extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'token')
-    ..pc<Datum>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'response', $pb.PbFieldType.PM,
+    ..pc<Datum>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'response',
+        $pb.PbFieldType.PM,
         subBuilder: Datum.create)
-    ..aOM<Backtrace>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'backtrace',
+    ..aOM<Backtrace>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'backtrace',
         subBuilder: Backtrace.create)
-    ..aOM<Datum>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile',
+    ..aOM<Datum>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'profile',
         subBuilder: Datum.create)
-    ..pc<Response_ResponseNote>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notes', $pb.PbFieldType.PE,
+    ..pc<Response_ResponseNote>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'notes',
+        $pb.PbFieldType.PE,
         valueOf: Response_ResponseNote.valueOf,
         enumValues: Response_ResponseNote.values)
-    ..e<Response_ErrorType>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorType', $pb.PbFieldType.OE,
+    ..e<Response_ErrorType>(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'errorType',
+        $pb.PbFieldType.OE,
         defaultOrMaker: Response_ErrorType.INTERNAL,
         valueOf: Response_ErrorType.valueOf,
         enumValues: Response_ErrorType.values)
@@ -696,10 +747,17 @@ class Datum_AssocPair extends $pb.GeneratedMessage {
 }
 
 class Datum extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Datum',
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Datum',
       createEmptyInstance: create)
     ..e<Datum_DatumType>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE,
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'type',
+        $pb.PbFieldType.OE,
         defaultOrMaker: Datum_DatumType.R_NULL,
         valueOf: Datum_DatumType.valueOf,
         enumValues: Datum_DatumType.values)
@@ -719,10 +777,19 @@ class Datum extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'rStr')
-    ..pc<Datum>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rArray', $pb.PbFieldType.PM,
+    ..pc<Datum>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'rArray',
+        $pb.PbFieldType.PM,
         subBuilder: Datum.create)
     ..pc<Datum_AssocPair>(
-        6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rObject', $pb.PbFieldType.PM,
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'rObject',
+        $pb.PbFieldType.PM,
         subBuilder: Datum_AssocPair.create)
     ..hasRequiredFields = false;
 
@@ -931,17 +998,33 @@ class Term extends $pb.GeneratedMessage {
           : 'Term',
       createEmptyInstance: create)
     ..e<Term_TermType>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE,
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'type',
+        $pb.PbFieldType.OE,
         defaultOrMaker: Term_TermType.DATUM,
         valueOf: Term_TermType.valueOf,
         enumValues: Term_TermType.values)
     ..aOM<Datum>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'datum',
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'datum',
         subBuilder: Datum.create)
-    ..pc<Term>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'args', $pb.PbFieldType.PM,
+    ..pc<Term>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'args',
+        $pb.PbFieldType.PM,
         subBuilder: Term.create)
     ..pc<Term_AssocPair>(
-        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'optargs', $pb.PbFieldType.PM,
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'optargs',
+        $pb.PbFieldType.PM,
         subBuilder: Term_AssocPair.create)
     ..hasRequiredFields = false;
 

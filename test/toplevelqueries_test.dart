@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:rethink_db_ns/rethink_db_ns.dart';
+import 'package:test/test.dart';
 
 main() {
   var r = RethinkDb() as dynamic;
@@ -326,8 +326,10 @@ main() {
   test("now command -> should return current DateTime object", () async {
     DateTime dt = await r.now().run(connection);
 
+    await Future.delayed(Duration(milliseconds: 1));
+
     expect(dt is DateTime, equals(true));
-    expect(dt.isBefore(DateTime.now()), equals(true));
+    expect(DateTime.now().difference(dt).inSeconds == 0, equals(true));
   });
 
   group("rqlDo command -> ", () {
