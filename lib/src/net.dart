@@ -114,10 +114,7 @@ class Connection {
       _sock = SecureSocket.connect(_host, _port, context: context);
     }
 
-    _sock.catchError((err) {
-      _completer.completeError(
-          RqlDriverError("Could not connect to $_host:$_port.  Error $err"));
-    }).then((socket) {
+    _sock.then((socket) {
       // ignore: unnecessary_null_comparison
       if (socket != null) {
         _socket = socket;
@@ -141,7 +138,12 @@ class Connection {
 
         _socket!.add(handshake);
       }
+    }).catchError((err) {
+      _completer.completeError(
+        RqlDriverError("Could not connect to $_host:$_port.  Error $err"),
+      );
     });
+
     return _completer.future;
   }
 
