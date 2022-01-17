@@ -1,4 +1,4 @@
-# RethinkDB Driver for Flutter
+# RethinkDB Driver for Dart/Flutter
 
 This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marceloneppel/rethinkdb) added support for 💪🏼[null safety](https://dart.dev/null-safety)💪🏼 .
 
