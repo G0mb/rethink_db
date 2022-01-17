@@ -7,7 +7,7 @@ This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marce
 ### Install Package
 
 > Install from [Pub](https://pub.dev/)
-```zsh
+```sh
 flutter pub add rethink_db_ns
 ```
 
@@ -60,6 +60,6 @@ var result = await r.table('tv_shows').get(1).run(connection);
 *More examples will be added soon...*
 
 ### Unit Test
-```zsh
-flutter test
+```sh
+dart test
 ```
