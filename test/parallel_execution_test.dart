@@ -1,26 +1,47 @@
 import 'dart:async';
-import 'package:flutter_test/flutter_test.dart';
+
 import 'package:rethink_db_ns/rethink_db_ns.dart';
+import 'package:test/test.dart';
+
+String? testDbName;
 
 main() {
+  setUp(() async {
+    final r = RethinkDb();
+    final conn = await r.connect();
+    if (testDbName == null) {
+      String useDb = await r.uuid().run(conn);
+      testDbName = 'parralel_test_db' + useDb.replaceAll("-", "");
+      await r.dbCreate(testDbName!).run(conn);
+    }
+    conn.close();
+  });
+
+  tearDown(() async {
+    final r = RethinkDb();
+    final conn = await r.connect();
+
+    await r.dbDrop(testDbName!).run(conn);
+
+    conn.close();
+  });
+
   test('ParallelExecution', () async {
     bool isParallel = await pEx();
     expect(isParallel, equals(true));
   }, timeout: Timeout.factor(4));
 }
 
-Future pEx() {
-  var r = RethinkDb() as dynamic;
-  return r
-      .connect(db: "testDB", port: 28015)
-      .then((connection) => _queryWhileWriting(connection, r));
+Future<bool> pEx() {
+  final r = RethinkDb();
+  return r.connect(db: testDbName!, port: 28015).then((connection) => _queryWhileWriting(connection, r));
 }
 
-_queryWhileWriting(conn, r) async {
+Future<bool> _queryWhileWriting(conn, r) async {
   //variable that will be set by our faster query
   int? total;
 
-  Completer testCompleter = Completer();
+  final testCompleter = Completer<bool>();
 
   //set up some test tables
 
@@ -33,14 +54,11 @@ _queryWhileWriting(conn, r) async {
 
   //create a big array to write
   var bigJson = [];
-  for (var i = 0; i < 100000; i++) {
+  for (var i = 0; i < 10000; i++) {
     bigJson.add({'id': i, 'name': 'a$i'});
   }
 
-  print('json built, starting write');
-
   r.table("bigTable").insert(bigJson).run(conn).then((d) {
-    print('write done');
     //remove test tables after test complete
     return r.tableDrop("bigTable").run(conn);
   }).then((_) {
@@ -53,7 +71,6 @@ _queryWhileWriting(conn, r) async {
   //run another query while the insert is running
   r.table("emptyTable").count().run(conn).then((t) {
     total = t;
-    print('total in emptyTable: $total');
   });
 
   return testCompleter.future;

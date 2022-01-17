@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 DIR="$(dirname $BASH_SOURCE)"
 
@@ -24,10 +24,10 @@ function run {
 
 # Retrieve updated protobuf for rethinkdb's wire protocol.
 # See https://www.rethinkdb.com/docs/writing-drivers/ for more detail.
-# run wget -O $DIR/ql2.proto https://raw.githubusercontent.com/rethinkdb/rethinkdb/next/src/rdb_protocol/ql2.proto
+run wget -O $DIR/ql2.proto https://raw.githubusercontent.com/rethinkdb/rethinkdb/next/src/rdb_protocol/ql2.proto
 
-# Re-generate protobuf files. 
+# Re-generate protobuf files.
 # See https://developers.google.com/protocol-buffers/docs/reference/dart-generated
 run protoc --proto_path=$DIR --dart_out=$DIR $DIR/ql2.proto
 
-run dartfmt --fix -w $DIR
+run dart format --fix $DIR
