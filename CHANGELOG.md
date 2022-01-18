@@ -1,3 +1,5 @@
+# 0.0.4
+- Fix readme info
 # 0.0.3
 - Remove flutter as a dependency
 - Fix failing test

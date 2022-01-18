@@ -1,6 +1,6 @@
 # RethinkDB Driver for Dart/Flutter
 
-This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marceloneppel/rethinkdb) added support for 💪🏼[null safety](https://dart.dev/null-safety)💪🏼 .
+This is a fork of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marceloneppel/rethinkdb) with [null safety](https://dart.dev/null-safety) 💪🏼 support and less dependencies.
 
 ## Getting Started
 
@@ -8,14 +8,14 @@ This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marce
 
 > Install from [Pub](https://pub.dev/)
 ```sh
-flutter pub add rethink_db_ns
-# or
 dart pub add rethink_db_ns
+# or
+flutter pub add rethink_db_ns
 ```
 
 ```yaml
 dependencies:
-  rethink_db_ns: ^0.0.3
+  rethink_db_ns: ^0.0.4
 ```
 
 > Install from [Github](https://github.com/G0mb/rethink_db)
