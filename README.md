@@ -9,11 +9,13 @@ This is a copy of [Dart 2 and Flutter RethinkDB Driver](https://github.com/marce
 > Install from [Pub](https://pub.dev/)
 ```sh
 flutter pub add rethink_db_ns
+# or
+dart pub add rethink_db_ns
 ```
 
 ```yaml
 dependencies:
-  rethink_db_ns: ^0.0.2
+  rethink_db_ns: ^0.0.3
 ```
 
 > Install from [Github](https://github.com/G0mb/rethink_db)
